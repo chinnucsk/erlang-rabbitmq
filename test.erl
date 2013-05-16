@@ -3,4 +3,7 @@
 -include_lib("amqp_client/include/amqp_client.hrl").
 
 do() ->
-	amqp_connection:start(#amqp_params_direct{node='rabbit@JOHNSON-PC'}).
+	{ok, Connection} = amqp_connection:start(#amqp_params_direct{node='rabbit@JOHNSON-WS'}),
+	{ok, Channel} = amqp_connection:open_channel(Connection),
+	
+	ok.
